@@ -6,6 +6,7 @@ int main(){
     int n=10;
     int sum=pow(n,2);
     cout<<"day 3"<<endl;
+    //day 4 commit
     cout<<sum<<endl;
     //day 3 commit
     return 0;
