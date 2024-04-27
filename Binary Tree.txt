@@ -1,0 +1,264 @@
+1 3 7 -1 -1 11 -1 -1 5 9 -1 -1 -1
+
+
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <queue>
+#include <climits>
+#include <algorithm>
+#include <utility> 
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* left;
+    Node* right;
+    Node(int d){
+        this->data=d;
+        this->left=NULL;
+        this->right=NULL;
+    }
+};
+Node* createNode(Node* root){
+    int data;
+    cin>>data;
+    if(data==-1)
+    return NULL;
+    root=new Node(data);
+    root->left=createNode(root->left);
+    root->right=createNode(root->right);
+    return root;
+}
+void traverse(Node* root){
+    if(root==NULL)
+    return ;
+    queue <Node*> q;
+    q.push(root);
+    q.push(NULL);
+    
+    while(!q.empty()){
+        Node* temp=q.front();
+        q.pop();
+        if(temp==NULL){
+            cout<<endl;
+            if(!q.empty())
+            q.push(NULL);
+        }
+        else{
+            cout<<temp->data<<" ";
+            if(temp->left)
+            q.push(temp->left);
+            if(temp->right)
+            q.push(temp->right);
+        }
+    }
+}
+void preorder(Node* root){
+    if(root==NULL)
+    return;
+    
+    cout<<root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
+}
+void inorder(Node* root){
+    if(root==NULL)
+    return;
+    
+    inorder(root->left);
+    cout<<root->data<<" ";
+    inorder(root->right);
+}
+void postorder(Node* root){
+    if(root==NULL)
+    return;
+    
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data<<" ";
+}
+int height(Node* root){
+    if(root==NULL)
+    return 0;
+    
+    int left=height(root->left);
+    int right=height(root->right);
+    
+    return max(left,right)+1;
+}
+pair<int,int> fastdiameter(Node* root){
+    if(root==NULL){
+        pair <int,int> p=make_pair(0,0);
+        return p;
+    }
+    pair<int,int> leftans=fastdiameter(root->left);
+    pair<int,int> rightans=fastdiameter(root->right);
+    
+    int op1=leftans.first;
+    int op2=rightans.first;
+    int op3=leftans.second+rightans.second+1;
+    
+    pair<int,int> temp;
+    temp.first=max(op1,max(op2,op3));
+    temp.second=max(leftans.second,rightans.second)+1;
+    return temp;
+}
+int diameter(Node* root){
+    return fastdiameter(root).first;
+}
+pair<bool,int> fastbalanceTree(Node* root){
+    if(root==NULL){
+        pair<bool,int> p=make_pair(true,0);
+        return p;
+    }
+    pair<bool,int> leftans=fastbalanceTree(root->left);
+    pair<bool,int> rightans=fastbalanceTree(root->right);
+    
+    pair<bool,int> temp;
+    temp.second=max(leftans.second,rightans.second)+1;
+    if(leftans.first && rightans.first && abs(leftans.second-rightans.second)<=1)
+    temp.first=true;
+    else
+    temp.first=false;
+    
+    return temp;
+}
+bool balanceTree(Node* root){
+    return fastbalanceTree(root).first;
+}
+pair<bool,int> fastSumTree(Node* root){
+    if(root==NULL){
+        pair <bool,int> p=make_pair(true,0);
+        return p;
+    }
+    if(root->left==NULL&&root->right==NULL){
+        pair <bool,int> p=make_pair(true,root->data);
+        return p;
+    }
+    pair<bool,int> leftans=fastSumTree(root->left);
+    pair<bool,int> rightans=fastSumTree(root->right);
+    
+    pair<bool,int> temp;
+    if(leftans.first && rightans.first && (root->data==leftans.second+rightans.second))
+    temp.first=true;
+    else
+    temp.first=false;
+    
+    return temp;
+}
+bool SumTree(Node* root){
+    return fastSumTree(root).first;
+}
+void solve(Node* root,int &sum,int &maxsum,int len,int &maxlen){
+    if(root==NULL)
+    return;
+    
+    sum+=root->data;
+    
+    if(len>maxlen){
+        maxsum=sum;
+        maxlen=len;
+    }
+    else if(len==maxlen)
+        maxsum=max(sum,maxsum);
+        
+    solve(root->left,sum,maxsum,len+1,maxlen);
+    solve(root->right,sum,maxsum,len+1,maxlen);
+}
+int maxsumofpath(Node* root){
+    int sum=0;
+    int maxsum=INT_MIN;
+    int len=0;
+    int maxlen=0;
+    solve(root,sum,maxsum,len,maxlen);
+    return maxsum;
+}
+Node* LCA(Node* root,int a,int b){
+    if(root==NULL)
+    return NULL;
+    if(root->data==a||root->data==b)
+    return root;
+    
+    Node* leftans=LCA(root->left,a,b);
+    Node* rightans=LCA(root->right,a,b);
+    
+    if(leftans==NULL&&rightans==NULL)
+    return NULL;
+    if(leftans!=NULL&&rightans==NULL)
+    return leftans;
+    if(leftans==NULL&&rightans!=NULL)
+    return rightans;
+    if(leftans!=NULL&&rightans!=NULL)
+    return root;
+}
+void findnoofpathfast(Node* root,vector <int> &arr,int &count,int k){
+    if(root==NULL)
+    return;
+    
+    arr.push_back(root->data);
+    findnoofpathfast(root->left,arr,count,k);
+    findnoofpathfast(root->right,arr,count,k);
+    int size=arr.size();
+    int sum=0;
+    for(int i=size-1;i>=0;i--){
+        sum+=arr[i];
+        if(sum==k)
+        count++;
+    }
+    arr.pop_back();
+}
+int findnoofpath(Node* root,int k){
+    vector <int> arr;
+    int count=0;
+    int sum=0;
+    findnoofpathfast(root,arr,count,k);
+    return count;
+}
+int main() {
+    //Node creation
+    Node* root=NULL;
+    root=createNode(root);
+    //traverse
+    traverse(root);
+    cout<<endl;
+    //pre in post
+    preorder(root);cout<<endl;
+    inorder(root);cout<<endl;
+    postorder(root);cout<<endl;
+    //height of the tree
+    cout<<"Height of the tree is "<<height(root)<<endl;
+    //diameter of the tree fast approach
+    cout<<"Diameter of the tree is "<<diameter(root)<<endl;
+    //Balance Tree
+    if(balanceTree(root))
+    cout<<"Balance hai bro!"<<endl;
+    else 
+    cout<<"Balance nhi hai bro"<<endl;
+    //Sum Tree
+    if(SumTree(root))
+    cout<<"Sum Tree hai bro"<<endl;
+    else
+    cout<<"Sum Tree nhi hai bro"<<endl;
+    //maxsumof the path
+    cout<<"Max Sum of the path"<<maxsumofpath(root)<<endl;
+    //Lowest Ancestor 
+    Node* temp=LCA(root,7,11);
+    cout<<"Lowest Ancestor of two nodes are "<<temp->data<<endl;
+    //No of path in the tree which have their sum equal to a particular no
+    cout<<"Total no of path are "<<findnoofpath(root,6);
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
