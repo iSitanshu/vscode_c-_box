@@ -1,0 +1,31 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+int main() {
+    // Write C++ code here
+    unordered_map<string,int>map;
+    pair<string,int>p1=make_pair("Sitanshu",0);
+    map.insert(p1);
+    pair<string,int>p2("Mishra",1);
+    map.insert(p2);
+    map["Ujjawal"]=3;
+    cout<<map["Sitanshu"]<<endl;
+    cout<<map["Mishra"]<<endl;
+    cout<<map["Ujjawal"]<<endl;
+    if(map.find("Ujjawal")!=map.end())
+    cout<<"Found"<<endl;
+    else
+    cout<<"Not found"<<endl;
+    if(map.find("Pistol")!=map.end())
+    cout<<"Found"<<endl;
+    else
+    cout<<"Not found"<<endl;
+    cout<<map.size()<<endl;
+    //TRaverse
+    cout<<endl;
+    cout<<"Traversing the map"<<endl;
+    for(auto i:map)
+    cout<<i.first<<"->"<<i.second<<endl;
+    return 0;
+}
