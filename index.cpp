@@ -8,7 +8,7 @@ int main(){
     cout<<"day 3"<<endl;
     //day 4 commit'
     cout<<sum<<endl;kdffn,
-    //day 21 commit
+    //day 21 commit,..
     //day 4 commith
     //day 5 commitk
     //day 6 commit
