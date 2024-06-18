@@ -3,7 +3,7 @@ retreii#include<iostream>
 using namespace std;
 int main(){
     cout<<"Sitanshu mishra"<<endl;
-    int n=10;
+    int n=10;x
     int sum=pow(n,2);
     cout<<"day 3"<<endl;
     //day 4 commit'
