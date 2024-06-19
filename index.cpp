@@ -4,7 +4,7 @@ using namespace std;
 int main(){
     cout<<"Sitanshu mishra"<<endl;
     int n=10;x
-    int sum=pow(n,2);
+    int sum=pow(n,2);c
     cout<<"day 3"<<endl;
     //day 4 commit'
     cout<<sum<<endl;kdffn,
