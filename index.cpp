@@ -3,8 +3,8 @@
 using namespace std;
 int main(){
     cout<<"Sitanshu mishra"<<endl;
-    int n=10;x';ll
-    int sum=pow(n,2);c
+    int n=10;
+    int sum=pow(n,2);
     cout<<"day 3"<<endl;
     //day 4 commit'
     cout<<sum<<endl;kdffn,,
