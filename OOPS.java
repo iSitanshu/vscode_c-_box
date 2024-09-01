@@ -32,3 +32,4 @@ class Pen {
 //     public void Setpassword(String pass){
 //         password=pass;
 //     }
+change the variable 
