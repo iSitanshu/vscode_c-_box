@@ -6,7 +6,7 @@ public class constructor {
     }
 }
 
-class Student{
+public class Student{
     String name;
     int roll;
 
