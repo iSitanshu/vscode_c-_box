@@ -8,6 +8,7 @@ public class OOPS{
         p1.setTip(1000);
         System.out.println(p1.getTip());
     }
+
 }
 class Pen {
     private String color;
