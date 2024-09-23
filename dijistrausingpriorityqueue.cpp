@@ -32,8 +32,6 @@ class Solution
                 adj[it[0]].push_back({i,it[1]});
             }
         }
-        
-        
         priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
         pq.push({0,S});
         vector<int> distance(V,INT_MAX);
