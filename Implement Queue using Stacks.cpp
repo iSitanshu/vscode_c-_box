@@ -3,7 +3,7 @@ public:
     stack<int> front;
     stack<int> rear;
     MyQueue() {
-        
+        // dequeue the above limit
     }
     
     void push(int x) {
