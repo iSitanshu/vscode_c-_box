@@ -5,7 +5,6 @@ public class constructor {
         Student s2=new Student(123);
     }
 }
-
 public class Student{
     String name;
     int roll;
@@ -20,3 +19,4 @@ public class Student{
         this.roll=roll;
     }
 }
+//change in code
