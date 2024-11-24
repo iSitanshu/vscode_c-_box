@@ -21,10 +21,10 @@ class oddeven{
     //     int mul=((~0)<<i);
     //     return (n & mul);
     // }
-    
     public static int rangebit(int n,int i,int j){
         int mul=((~0)<<j | ~((~0)<<i));
         return (n & mul);
+        //return statement
     }
     public static void main(String args[])
     {
