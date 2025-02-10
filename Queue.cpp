@@ -8,6 +8,7 @@ struct QueueNode
     QueueNode *next;
 };
 
+
 class MyQueue {
 private:
     int arr[100005];
