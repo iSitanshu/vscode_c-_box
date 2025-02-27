@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+int check(vector<int>& arr,int mid,int k){
+    int cnt = 1;
+    int prev = arr[0];
+    for(int i=1;i<arr.size();i++){
+        if(arr[i]>=prev+mid){
+            cnt++;
+            prev = arr[i];
+        }
+    }
+    return cnt>=k;
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,k;
+        cin>>n>>k;
+        vector<int> arr(n);
+        for(int i=0;i<n;i++) cin>>arr[i];
+        sort(arr.begin(),arr.end());
+        
+        int low = 1;
+        int high = arr.back()-arr[0];
+        int ans = -1;
+        
+        while(low<=high){
+            int mid = low+(high-low)/2;
+            
+            if(check(arr,mid,k)){
+                ans = mid;
+                low = mid+1;
+            }else high = mid-1;       
+        }
+        cout<<ans<<endl;
+    }
+    return 0;
+}
