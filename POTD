@@ -10,7 +10,7 @@ int check(vector<int>& arr,int mid,int k){
     } 
     }
     return cnt>=k;
-}  
+}   
 int main(){
     int t;
     cin>>t;
