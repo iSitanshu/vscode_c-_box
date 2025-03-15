@@ -13,7 +13,7 @@ int check(vector<int>& arr,int mid,int k){
 }   
 int main(){
     int t;
-    cin>>t;
+    cin>>t; 
     while(t--){
         int n,k;
         cin>>n>>k;
