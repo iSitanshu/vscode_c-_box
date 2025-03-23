@@ -3,7 +3,7 @@ using namespace std;
 int check(vector<int>& arr,int mid,int k){
     int cnt = 1;  
     int prev = arr[0];
-    for(int i=1;i<arr.size();i++){
+    for(int i=1;i<arr.size();i++){ 
         if(arr[i]>=prev+mid){
             cnt++;
             prev = arr[i];
