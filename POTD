@@ -7,7 +7,7 @@ int check(vector<int>& arr,int mid,int k){
         if(arr[i]>=prev+mid){
             cnt++;
             prev = arr[i]; 
-    }
+    } 
     }
     return cnt>=k;
 }   
