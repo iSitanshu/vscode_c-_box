@@ -6,7 +6,7 @@ int check(vector<int>& arr,int mid,int k){
     for(int i=1;i<arr.size();i++){  
         if(arr[i]>=prev+mid){
             cnt++;
-            prev = arr[i]; 
+            prev = arr[i];  
     }  
     }
     return cnt>=k;  
