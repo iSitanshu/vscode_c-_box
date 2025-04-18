@@ -9,7 +9,7 @@ int check(vector<int>& arr,int mid,int k){
             prev = arr[i];   
     }  
     } 
-    return cnt>=k;  
+    return cnt>=k;   
 }   
 int main(){
     int t;
