@@ -8,7 +8,7 @@ int check(vector<int>& arr,int mid,int k){
             cnt++;  
             prev = arr[i];   
     }  
-    }  
+    }   
     return cnt>=k;    
 }   
 int main(){
