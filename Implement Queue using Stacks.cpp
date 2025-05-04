@@ -9,7 +9,7 @@ public:
     void push(int x) {
         while(!rear.empty()){
             front.push(rear.top());
-            rear.pop();
+            rear.pop(); 
         }
         rear.push(x);
         while(!front.empty()){
