@@ -1,4 +1,4 @@
-import java.util.*;
+ import java.util.*;
 class oddeven{
     // public static void check(int n){
     //     int bitmask=1;
