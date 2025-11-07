@@ -1,4 +1,4 @@
- class Solution {
+  class Solution {
 public:
     int beautySum(string s) {
         int len = s.length();
@@ -27,3 +27,4 @@ public:
     }
 
 };
+
